@@ -1,59 +1,54 @@
 # DRF Shablon
 
-Bu shablon [Django REST Framework (DRF)](https://www.django-rest-framework.org/) asosida tezkor va samarali API ishlab chiqishni boshlash uchun tayyorlangan. Shablon modular arxitekturaga asoslangan bo'lib, rivojlantirishni tezlashtiradi va loyihani oson boshqarish imkonini beradi.
-
-## Xususiyatlar
-
-- **Modular arxitektura**: Ilovalar yaxshi tashkil etilgan.
-- **DRF integratsiyasi**: RESTful API yaratuvchi komponentlar tayyor.
-- **Sozlanadigan konfiguratsiyalar**: `settings` turli muhitlarga moslashgan.
-- **Asosiy CRUD operatsiyalari**: API'lar uchun umumiy funktsiyalar tayyor.
-- **Yordamchi skriptlar va konfiguratsiyalar**: Osonroq boshlash uchun.
-
 ## Loyiha Tuzilishi
 
 ```plaintext
 drf_shablon/
-├── apps/                # Alohida ilovalar joylashgan
-├── core/                # Asosiy konfiguratsiya va yordamchi funksiyalar
-├── deployment/          # Ishlab chiqarish va deployment uchun sozlamalar
-├── envs/                # Turli muhitlarga mos sozlamalar
-├── requirements/        # Bog‘liqliklar
-├── manage.py            # Django boshqaruv fayli
-└── README.md            # Loyihaning o'zi haqida hujjatlar
+├── apps/                                   # Alohida ilovalar joylashgan
+├── core/                                   # Asosiy konfiguratsiya va yordamchi funksiyalar
+├── docker-compse.yml, Dockerfile           # Ishlab chiqarish va deployment uchun sozlamalar
+├── .env/                                   # Turli muhitlarga mos sozlamalar
+├── requirements/                           # Bog‘liqliklar
+├── manage.py                               # Django boshqaruv fayli
+└── README.md                               # Loyihaning o'zi haqida hujjatlar
 ```
 
-1.O‘rnatish
-Reponi klonlash:
+### 1. O‘rnatish Reponi klonlash:
+
 
 ```plaintext
 git clone <repository-url>
-cd drf_shablon
 ```
 
-2.env example fayllardan nusxa olib env fayllarni to'ldirib chiqish
+### 2.  **'.env.example'** fayllardan nusxa olib **'.env'** fayllarni to'ldirib chiqish
 
-3.docker konteynerlarini nomini o'zgartirib chiqish o'zingizga moslab
+### 3.  Virtual muhit o'rnatish
 
-4.docker konteynerni ishga tushirish:
+pycharm da bo'lsa
+```commandline
+O'ng burchak pastda <new interpreter> >> Add New Interpreter >>  Add Local Interpreter >> Base Python degan joydam 3.12 chi versiya tanlanadi
+```
+agar to'g'ri bolsa **"(venv)"** terminalda shunaqa belgi  chiqadi ikki hilatda ham 
 
-```plaintext
-cd deployment/docker/develop
-docker-compose up --build -d
+Har qanday Linux yoki Mac terminalda  bo'lsa
+```commandline
+- python3 -m venv venv
+- source venv/bin/activate
 ```
 
-5.migratsiyalarni amalga oshirish:
-
-```plaintext
-docker-compose exec project_name_web_container python manage.py migrate
+### 4.  Loyhaga kerakli package larni o'rnatsh kerakk
+```commandline
+pip install -r requirements/develop.txt
 ```
 
-6.superuser yaratish:
 
-```plaintext
-docker-compose exec project_name_web_container python manage.py createsuperuser
+### 5.  Database yaratish .env da qo'yilgan nom va password bilan
+ 
+```commandline
+- psql postgres
+- create user <user_name> with password '<user_password>';
+- create database <db_name> with owner <user_name>
 ```
 
-7.Loyihani ko‘rish:
-API server quyidagi manzilda ishlaydi:
-http://localhost:8000
+
+
