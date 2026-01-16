@@ -21,7 +21,6 @@ DJANGO_APPS = [
 ]
 
 CUSTOM_APPS = [
-    "apps.global.apps.GlobalConfig",
 ]
 
 THIRD_PARTY_APPS = [

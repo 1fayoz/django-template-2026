@@ -3,8 +3,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
-
-load_dotenv(f"{BASE_DIR}/envs/database/.env")
+load_dotenv(f"{BASE_DIR}/.env")
 
 
 class DatabaseSecurity:
