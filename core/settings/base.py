@@ -21,6 +21,8 @@ DJANGO_APPS = [
 ]
 
 CUSTOM_APPS = [
+    "apps.client",
+    "apps.seller"
 ]
 
 THIRD_PARTY_APPS = [
@@ -80,7 +82,7 @@ REST_FRAMEWORK = {
         "django_filters.rest_framework.DjangoFilterBackend",
         "rest_framework.filters.SearchFilter",
     ),
-    "DEFAULT_PAGINATION_CLASS": "apps.global.pagination.DefaultPagination",
+    "DEFAULT_PAGINATION_CLASS": "utils.pagination.DefaultPagination",
     "PAGE_SIZE": 10,
 }
 
