@@ -47,8 +47,20 @@ pip install -r requirements/develop.txt
 ```commandline
 - psql postgres
 - create user <user_name> with password '<user_password>';
-- create database <db_name> with owner <user_name>
+- create database <db_name> with owner <user_name>;
+```
+
+### 5.  Migrate qilish kerak 
+
+```commandline
+python manage.py migrate
 ```
 
 
+### 6. Loyhani run qilishga yetib keldi
+
+```commandline
+python manage.py runserver 0.0.0.0:8008
+```
+http://localhost:8008/ shu link orqali kiring va finish 🏁
 
